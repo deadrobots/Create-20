@@ -28,7 +28,6 @@ def move_servo(servo, endPos, speed=10):
     msleep(10)
 
 def DEBUG(PrintTime=True):
-    wait_for_button()
     ao()
     msleep(100)
     if PrintTime:
