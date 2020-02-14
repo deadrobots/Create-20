@@ -29,13 +29,12 @@ def drive_until_right_bump(speed):
 
 
 def get_black_right():
-    #print("Black Right Cliff")
+    # print("Black Right Cliff")
     return get_create_rcliff_amt() < c.ON_BLACK
 
 
 def get_black_left():
-    #print("Black Left Cliff")
-    #print("Black Left Cliff")
+    # print("Black Left Cliff")
     return get_create_lcliff_amt() < c.ON_BLACK
 
 
@@ -71,18 +70,18 @@ def drive_to_black_and_square_up(speed):
     create_drive_direct(0, 0)
 
 
-def drive_timed(left, right, time): #DRS forward is opposite of create forward
+def drive_timed(left, right, time):  # DRS forward is opposite of create forward
     create_drive_direct(-right, -left)
     msleep(time)
     create_drive_direct(0, 0)
 
 
 def drive_condition(condition, speed):
-    #print("Driving for condition")
+    # print("Driving for condition")
     speed = -speed
     create_drive_direct(speed, speed)
     while condition:
-         pass
+        pass
     create_drive_direct(0, 0)
 
 
@@ -110,7 +109,7 @@ def rotate_till_black(power):
         create_drive_direct(-power, power)
     else:
         create_drive_direct(power, -power)
-    while (get_create_rfcliff_amt() > 2000):
+    while get_create_rfcliff_amt() > 2000:
         pass
     create_stop()
 
@@ -120,25 +119,15 @@ def drive_forever(left, right):
 
 
 def stop():
+    create_drive_direct(0, 0)
     create_stop()
-
-
-INCH_TO_MIL = 25.4
-
-
-def drive_distance2(distance, speed):
-    if distance < 0:
-        speed = -speed
-    dist_mil = INCH_TO_MIL * distance
-    time = (int)((dist_mil / speed) * 1000)
-    drive_timed(speed, speed, time)
 
 
 def rotate_degrees(degrees, speed):
     if degrees < 0:
         speed = -speed
         degrees = abs(degrees)
-    degrees = degrees * 1.13
+    degrees *= 1.13
     set_create_total_angle(0)
     drive_forever(-speed, speed)
     while abs(get_create_total_angle()) < degrees:
@@ -151,14 +140,14 @@ def pivot_till_black(power):
         create_drive_direct(0, -power)
     else:
         create_drive_direct(0, power)
-    while analog(c.left_tophat) < 2000:
+    while get_black_left < 2000:
         pass
     create_stop()
 
 
 def timed_line_follow_left_front(speed, time):
     sec = seconds()
-    while(seconds() - sec<time):
+    while seconds() - sec < time:
         if get_left_front():
             create_drive_direct(speed/10, speed)
         else:
@@ -169,14 +158,14 @@ def timed_line_follow_left_front(speed, time):
 
 def turn_till_right_front_black(left, right):
     create_drive_direct(left, right)
-    while (get_create_rfcliff_amt() > 2000):
+    while get_create_rfcliff_amt() > 2000:
         pass
     create_stop()
 
 
 def proportional_line_follow(speed, time):
     sec = seconds()
-    while(seconds() - sec<time):
+    while seconds() - sec < time:
         if get_create_lfcliff_amt() < 1200:
             create_drive_direct(speed, speed/15)
         elif get_create_lfcliff_amt < 1700 and get_create_lfcliff_amt > 1200:
@@ -186,6 +175,6 @@ def proportional_line_follow(speed, time):
         elif get_create_lfcliff_amt < 2700 and get_create_lfcliff_amt > 2200:
             create_drive_direct(speed/2, speed)
         elif get_create_lfcliff_amt > 2700:
-            create_drive_direct(speed/5, speed)
+            create_drive_direct(speed / 5, speed)
         msleep(10)
     create_drive_direct(0, 0)
