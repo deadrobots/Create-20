@@ -58,7 +58,7 @@ def _drive_left_right(left_speed, right_speed, theta=0):
 
 
 def drive_timed(speed, time):
-    # print("driving for time")
+    # print("driving for time, time in milliseconds")
     # calibrate_gyro()
     start_time = seconds()
     theta = 0
