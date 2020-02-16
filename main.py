@@ -8,7 +8,7 @@ import gyro as g
 
 
 def main():
-    print("Running!!!")
+    print("Running")
     a.init()
     a.head_to_botguy()
     a.grab_botguy()

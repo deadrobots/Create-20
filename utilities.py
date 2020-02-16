@@ -34,7 +34,7 @@ def DEBUG(print_time=True):
     msleep(100)
     if print_time:
         print 'Program stop for DEBUG\nSeconds: ', seconds() - c.START_TIME
-    move_servo(c.ARM, c.ARM_DOWN)
+    #move_servo(c.ARM, c.ARM_DOWN)
     msleep(2500)
     disable_servos()
     exit(0)

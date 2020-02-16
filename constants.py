@@ -17,6 +17,7 @@ if IS_PRIME:
     ARM_DROP_BOTGUY = 500
     ARM_GRAB = 1250
     ARM_UP = 1800
+    ARM_POLE_RELEASE = 700
     # hand
     HAND_OPEN = 80
     HAND_CLOSE = 1300
