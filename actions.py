@@ -38,7 +38,7 @@ def head_to_botguy():
     u.move_servo(c.HAND, c.HAND_OPEN)
     g.drive_timed(400, 2400)
     g.pivot_on_left_wheel(100, 42)
-    g.drive_timed(100, 900)
+    g.drive_timed(100, 1000)
     g.drive_timed(-100, 950)
     g.pivot_on_right_wheel(100, 50)
     u.move_servo(c.ARM, c.ARM_GRAB)
@@ -61,58 +61,49 @@ def grab_botguy():
 
 def drop_botguy():
     # d.drive_until_left_bump(100)
-    u.wait_for_button()
+    #u.wait_for_button()
     g.turn_with_gyro(-100, 100, 150)
-    u.wait_for_button()
-
-
-
-
-    # g.drive_timed(-200, 3700)
-    # msleep(100)
-    # g.drive_timed_left_right(50, -50, 1500)
-    # msleep(100)
-    # d.drive_to_black_and_square_up(100)
-    # msleep(100)
-    # g.turn_with_gyro(-100, 100, 180)
-    # msleep(100)
     u.move_servo(c.ARM, c.ARM_DROP_BOTGUY)
     msleep(100)
     u.move_servo(c.HAND, c.HAND_OPEN)
     msleep(100)
-    g.turn_with_gyro(-100, 100, 150)
-    #150 used to be 170 degrees
-    u.wait_for_button()
+
+def grab_pole():
+    g.turn_with_gyro(-100, 100, 80)
+    g.drive_timed(100, 1200)
+    g.turn_with_gyro(-100, 100, 87)
+    # 150 used to be 170 degrees
     u.move_servo(c.ARM, c.ARM_DROP_BOTGUY + 200)
     g.drive_timed(100, 1000)
     u.move_servo(c.HAND, c.HAND_CLOSE)
-
-
-
-    u.wait_for_button()
-
-
-    msleep(100)
-    d.drive_to_black_and_square_up(100)
-    msleep(100)
-    print (" here ")
-    u.wait_for_button()
-
-
-def grab_pole():
-    u.move_servo(c.ARM, c.SWING_GRAB)
-    msleep(100)
-    u.move_servo(c.HAND, c.SWING_OPEN)
-    msleep(100)
-    print (" time to pivot ")
-    g.drive_timed(100, 2500)
-    g.pivot_on_left_wheel(100, 60)
+    # we have the pipe
+    #msleep(100)
+    # d.drive_to_black_and_square_up(100)
+    # msleep(100)
+    # u.move_servo(c.ARM, c.SWING_GRAB)
+    # msleep(100)
+    # u.move_servo(c.HAND, c.SWING_OPEN)
+    # msleep(100)
+    # print (" time to pivot ")
+    # g.drive_timed(100, 2500)
+    # g.pivot_on_left_wheel(100, 60)
     # move wrist
-    msleep(100)
-    u.wait_for_button()
-    u.move_servo(c.HAND, c.HAND_CLOSE)
-    msleep(100)
-    u.wait_for_button()
-    g.drive_timed(-100, 1000)
+    #msleep(100)
+    print (" here ")
+    u.move_servo(c.ARM, c.ARM_DROP_BOTGUY -100)
+    msleep(500)
+    g.drive_timed(-100, 1250)
+    msleep(500)
+    g.turn_with_gyro(-100, 100, 20)
+    u.move_servo(c.HAND, c.HAND_OPEN)
+    u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
+    g.drive_timed(-100, 1200)
+    g.turn_with_gyro(100, -100, 110)
+    g.drive_timed(100, 1250)
+
+
+
+
+
 
 
