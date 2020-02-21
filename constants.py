@@ -15,11 +15,13 @@ if IS_PRIME:
     # arm
     ARM_DOWN = 100
     ARM_DROP_BOTGUY = 500
+    ARM_POLE_GRAB = 700
     ARM_GRAB = 1250
     ARM_UP = 1800
     ARM_POLE_RELEASE = 700
     # hand
     HAND_OPEN = 80
+    HAND_MIDDLE = 800
     HAND_CLOSE = 1300
     SWING_GRAB = 400
     SWING_OPEN = 800

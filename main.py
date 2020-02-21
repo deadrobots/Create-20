@@ -13,7 +13,12 @@ def main():
     a.head_to_botguy()
     a.grab_botguy()
     a.drop_botguy()
-    a.grab_pole()
+    a.go_to_first_pole()
+    a.grab_first_pole()
+    a.go_to_second_pole()
+    a.grab_second_pole()
+    a.go_to_third_pole()
+    a.grab_third_pole()
     u.DEBUG()
 
 

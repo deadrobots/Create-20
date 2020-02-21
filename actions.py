@@ -30,6 +30,7 @@ def init():
     msleep(100)
     g.drive_timed(-80, 1000)
     u.wait_for_button()
+    c.START_TIME = seconds()
     g.calibrate_gyro()
 
 
@@ -68,38 +69,72 @@ def drop_botguy():
     u.move_servo(c.HAND, c.HAND_OPEN)
     msleep(100)
 
-def grab_pole():
+def go_to_first_pole():
     g.turn_with_gyro(-100, 100, 80)
     g.drive_timed(100, 1200)
+
+def grab_first_pole():
     g.turn_with_gyro(-100, 100, 87)
-    # 150 used to be 170 degrees
-    u.move_servo(c.ARM, c.ARM_DROP_BOTGUY + 200)
+    u.move_servo(c.ARM, c.ARM_POLE_GRAB)
     g.drive_timed(100, 1000)
     u.move_servo(c.HAND, c.HAND_CLOSE)
     # we have the pipe
-    #msleep(100)
-    # d.drive_to_black_and_square_up(100)
-    # msleep(100)
-    # u.move_servo(c.ARM, c.SWING_GRAB)
-    # msleep(100)
-    # u.move_servo(c.HAND, c.SWING_OPEN)
-    # msleep(100)
-    # print (" time to pivot ")
-    # g.drive_timed(100, 2500)
-    # g.pivot_on_left_wheel(100, 60)
-    # move wrist
-    #msleep(100)
     print (" here ")
     u.move_servo(c.ARM, c.ARM_DROP_BOTGUY -100)
     msleep(500)
-    g.drive_timed(-100, 1250)
+    g.drive_timed(-100, 1400)
     msleep(500)
     g.turn_with_gyro(-100, 100, 20)
     u.move_servo(c.HAND, c.HAND_OPEN)
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
-    g.drive_timed(-100, 1200)
+
+def go_to_second_pole():
+    g.drive_timed(-100, 1250)
     g.turn_with_gyro(100, -100, 110)
-    g.drive_timed(100, 1250)
+    g.drive_timed(100, 1800)
+
+def grab_second_pole():
+    g.turn_with_gyro(-100, 100, 87)
+    u.move_servo(c.ARM, c.ARM_POLE_GRAB)
+    g.drive_timed(100, 2500)
+    u.move_servo(c.HAND, c.HAND_CLOSE)
+    # we have the pipe
+    print (" here ")
+    u.move_servo(c.ARM, c.ARM_DROP_BOTGUY - 100)
+    msleep(500)
+    g.drive_timed(-100, 1300)
+    msleep(500)
+    g.turn_with_gyro(-100, 100, 20)
+    u.move_servo(c.HAND, c.HAND_OPEN)
+    u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
+
+def go_to_third_pole():
+    g.turn_with_gyro(100, -100, 110)
+    g.drive_timed(100, 3000)
+    g.drive_timed(-100, 500)
+
+def grab_third_pole():
+    u.wait_for_button()
+    g.turn_with_gyro(-100, 100, 84)
+    u.wait_for_button()
+    u.move_servo(c.ARM, c.ARM_POLE_GRAB)
+    u.move_servo(c.HAND, c.HAND_MIDDLE)
+    u.wait_for_button()
+    g.drive_timed(100, 1200)
+    u.move_servo(c.HAND, c.HAND_CLOSE)
+    # we have the pipe
+    print (" here ")
+    u.move_servo(c.ARM, c.ARM_DROP_BOTGUY - 100)
+    msleep(500)
+    g.drive_timed(-100, 1300)
+    msleep(500)
+    g.turn_with_gyro(-100, 100, 20)
+    u.move_servo(c.HAND, c.HAND_OPEN)
+    u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
+
+
+
+
 
 
 
