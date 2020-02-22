@@ -96,7 +96,7 @@ def go_to_second_pole():
 def grab_second_pole():
     g.turn_with_gyro(-100, 100, 87)
     u.move_servo(c.ARM, c.ARM_POLE_GRAB)
-    g.drive_timed(100, 2500)
+    g.drive_timed(100, 2700)
     u.move_servo(c.HAND, c.HAND_CLOSE)
     # we have the pipe
     print (" here ")
@@ -120,7 +120,7 @@ def grab_third_pole():
     u.move_servo(c.ARM, c.ARM_POLE_GRAB)
     u.move_servo(c.HAND, c.HAND_MIDDLE)
     u.wait_for_button()
-    g.drive_timed(100, 1200)
+    g.drive_timed(100, 1500)
     u.move_servo(c.HAND, c.HAND_CLOSE)
     # we have the pipe
     print (" here ")
@@ -131,6 +131,13 @@ def grab_third_pole():
     g.turn_with_gyro(-100, 100, 20)
     u.move_servo(c.HAND, c.HAND_OPEN)
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
+
+def go_to_orange_ball():
+    g.drive_timed(-100, 20)
+    g.turn_with_gyro(100, -100, 110)
+    g.drive_timed(100, 1500)
+    g.drive_timed(-100, 2000)
+    g.turn_with_gyro(-100, 100, 50)
 
 
 
