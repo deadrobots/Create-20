@@ -10,11 +10,12 @@ import gyro as g
 def main():
     print("Running")
     a.init()
-    a.head_to_botguy()
+    a.head_to_botguy_fast()
     a.grab_botguy()
     a.drop_botguy()
     a.go_to_first_pole()
     a.grab_first_pole()
+    u.DEBUG()
     a.go_to_second_pole()
     a.grab_second_pole()
     a.go_to_third_pole()

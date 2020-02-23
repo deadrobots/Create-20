@@ -16,6 +16,7 @@ def move_servo(servo, end_pos, speed=10):
     # speed of 2000 is fast
     # speed of 10 is the default
     now = get_servo_position(servo)
+    sleep = (speed/5) + 3
     if now > 2047:
         print("Servo setting too large ", servo)
     if now < 0:
@@ -24,9 +25,9 @@ def move_servo(servo, end_pos, speed=10):
         speed = -speed
     for i in range(now, end_pos, speed):
         set_servo_position(servo, i)
-        msleep(10)
+        msleep(sleep)
     set_servo_position(servo, end_pos)
-    msleep(10)
+    msleep(sleep)
 
 
 def DEBUG(print_time=True):
