@@ -12,22 +12,25 @@ HAND = 1
 
 if IS_PRIME:
     # servo positions
-    # arm
-    ARM_DOWN = 100
+    # arm values
+    ARM_DOWN = 300
+    ARM_POLE_PULL = 600
     ARM_DROP_BOTGUY = 500
     ARM_POLE_GRAB = 700
+    ARM_POLE_RELEASE = 700
     ARM_GRAB = 1250
     ARM_UP = 1800
-    ARM_POLE_RELEASE = 700
-    # hand
+
+    # hand values
     HAND_OPEN = 80
     HAND_MIDDLE = 800
     HAND_CLOSE = 1300
+
     SWING_GRAB = 400
     SWING_OPEN = 800
     SWING_CLOSE = 1500
 
-    # top hat values
+    # tophat values
     ON_BLACK = 2000
 
     # gyro
@@ -36,12 +39,20 @@ if IS_PRIME:
 
 elif IS_CLONE:  # placeholder values
     # servo positions
+    # arm values
     ARM_DOWN = 10
-    ARM_UP = 1400
-    ARM_GRAB = 800
-    HAND_OPEN = 80
-    HAND_CLOSE = 1300
+    ARM_POLE_PULL = 200
     ARM_DROP_BOTGUY = 300
+    ARM_POLE_GRAB = 500
+    ARM_POLE_RELEASE = 500
+    ARM_GRAB = 800
+    ARM_UP = 1400
+
+    # hand values
+    HAND_OPEN = 80
+    HAND_MIDDLE = 800
+    HAND_CLOSE = 1300
+
     SWING_GRAB = 400
     SWING_OPEN = 800
     SWING_CLOSE = 1500
