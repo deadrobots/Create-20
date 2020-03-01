@@ -24,6 +24,7 @@ if IS_PRIME:
     # hand values
     HAND_OPEN = 80
     HAND_MIDDLE = 800
+    HAND_SATELLITE_DROP = 1000
     HAND_CLOSE = 1300
 
     SWING_GRAB = 400

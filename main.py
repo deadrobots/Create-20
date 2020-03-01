@@ -21,6 +21,7 @@ def main():
     a.grab_third_pole()
     a.go_to_orange_ball()
     a.grab_orange_ball()
+    a.deliver_organge_ball()
     u.DEBUG()
 
 

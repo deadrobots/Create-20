@@ -6,12 +6,21 @@ import utilities as u
 
 def get_bump_left():
     """Returns condition of left create bumper"""
-    return get_create_lbump
+    return get_create_lbump()
 
 
 def get_bump_right():
     """Returns condition of right create bumper"""
-    return get_create_rbump
+    return get_create_rbump()
+
+
+def get_bump_left_or_right():
+    if get_bump_left():
+        return True
+    elif get_bump_right():
+        return True
+    else:
+        return False
 
 
 def drive_until_left_bump(speed):

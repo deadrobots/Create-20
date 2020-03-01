@@ -23,6 +23,17 @@ def init():
     u.move_servo(c.HAND, c.HAND_OPEN, 5)
     u.move_servo(c.HAND, c.HAND_CLOSE, 5)
     u.move_servo(c.HAND, c.HAND_OPEN, 5)
+    print("testing bumpers")
+    print("left bump")
+    while d.get_bump_left() == False:
+        pass
+    print("right bump")
+    while d.get_bump_right() == False:
+        pass
+    msleep(500)
+    print("left or right bump")
+    while d.get_bump_left_or_right() == False:
+        pass
     print("don't touch me, i'm calibrating!")
     g.calibrate_gyro()
     print("calibration complete")
@@ -48,6 +59,7 @@ def head_to_botguy_slow():
     u.move_servo(c.ARM, c.ARM_GRAB)
     msleep(100)
 
+
 def head_to_botguy_fast():
     print "head_to_botguy_fast"
     u.move_servo(c.ARM, c.ARM_UP,50)
@@ -66,75 +78,98 @@ def drop_botguy():
     g.turn_with_gyro(-150, 150, 140)
     u.move_servo(c.ARM, c.ARM_DROP_BOTGUY, 5)
     u.move_servo(c.HAND, c.HAND_OPEN)
-    u.move_servo(c.ARM, c.ARM_POLE_GRAB)
+
 
 def go_to_first_pole():
-    g.drive_timed(100, 1500)  # drive forward to give room for turn
-    g.turn_with_gyro(-50, 50, 84)
+    u.move_servo(c.ARM, c.ARM_UP)
+    d.drive_to_black_and_square_up(100)
+    g.drive_timed(-100, 1500)
+    u.move_servo(c.ARM, c.ARM_POLE_GRAB)
+    g.turn_with_gyro(-80, 80, 90)
     u.move_servo(c.HAND, c.HAND_CLOSE)
-    g.drive_timed(100, 500)
+    g.drive_timed(100, 750)
+    g.turn_with_gyro(-80, 80, 85)
+
 
 def grab_pole():
-    g.turn_with_gyro(-50, 50, 80)
-    g.drive_timed(100, 2600)
-    g.turn_with_gyro(-50, 50, 16)
+    g.drive_timed(100, 2200)
+    g.turn_with_gyro(-80, 80, 15)
     # we have the pipe
     u.move_servo(c.ARM, c.ARM_POLE_PULL, 5)
-    g.drive_timed(-100, 1500)
+    g.drive_timed(-100, 1600)
     msleep(100)
-    g.turn_with_gyro(-50, 50, 14)  # score cart
+    g.turn_with_gyro(-50, 50, 15)  # score cart
     msleep(500)
-    g.drive_timed(100, 1250) #1300
+    g.drive_timed(100, 1250)
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
-    g.turn_with_gyro(50, -50, 40)
-    g.drive_timed(-100, 2050) #2000
+    g.turn_with_gyro(50, -50, 30)
+    d.drive_to_black_and_square_up(-100)
+
 
 def go_to_second_pole():
-    g.turn_with_gyro(50, -50, 75)
-    g.drive_timed(100, 2400)
+    g.turn_with_gyro(80, -80, 90)
+    g.drive_timed(100, 2600)
+    g.turn_with_gyro(-80, 80, 85)
+    g.drive_timed(100, 500)
+
 
 def go_to_third_pole():
-    g.turn_with_gyro(50, -50, 75)
-    g.drive_timed(175, 2700)
+    g.turn_with_gyro(80, -80, 90)
+    g.drive_timed(175, 2800)
     msleep(500)
-    g.drive_timed(-100, 500)
+    g.drive_timed(-100, 600)
+
 
 def grab_third_pole():
-    g.turn_with_gyro(-50, 50, 85)
+    g.turn_with_gyro(-80, 80, 82)    # 85
     u.move_servo(c.ARM, c.ARM_POLE_GRAB)
     u.move_servo(c.HAND, c.HAND_MIDDLE)
-    g.drive_timed(100, 1700)
+    g.drive_timed(50, 3800)     # 100, 2000
     u.move_servo(c.HAND, c.HAND_CLOSE)
     # we have the pipe
     u.move_servo(c.ARM, c.ARM_POLE_PULL)
     msleep(500)
-    g.drive_timed(-100, 1300)
+    g.drive_timed(-100, 1800)   # 1600
     msleep(500)
-    g.turn_with_gyro(-100, 100, 20)
+    g.turn_with_gyro(-50, 50, 15)
     u.move_servo(c.HAND, c.HAND_OPEN)
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
-    u.wait_for_button()
+
 
 def go_to_orange_ball():
     g.turn_with_gyro(50, -50, 20)
-    u.wait_for_button()
-    g.drive_timed(-100, 3000)  # should be a back up until back bumper pressed
-    u.wait_for_button()
+    d.drive_to_black_and_square_up(-100)
+    g.drive_condition(100, d.get_bump_left_or_right, False)
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE + 200)
-    u.wait_for_button()
     g.turn_with_gyro(100, -100, 90)
-    u.wait_for_button()
-    g.drive_timed(100, 1000)
-    u.wait_for_button()
+    g.drive_timed(100, 1200)
     g.drive_timed(-100, 500)
-    u.wait_for_button()
-    g.turn_with_gyro(50, -50, 150)
-    u.wait_for_button()
+    g.turn_with_gyro(80, -80, 150)
+
 
 def grab_orange_ball():
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE + 100)
+    g.drive_timed(50, 800)
     u.move_servo(c.HAND, c.HAND_CLOSE, 3)
-    u.wait_for_button()
     u.move_servo(c.ARM, c.ARM_UP, 5)
 
 
+def deliver_organge_ball():
+    g.turn_with_gyro(80, -80, 120)
+    g.drive_timed(100, 1000)
+    d.drive_to_black_and_square_up(100)
+    g.turn_with_gyro(-80, 80, 90)
+    g.drive_timed(100, 4000)
+    g.turn_with_gyro(80, -80, 45)
+    g.drive_timed(100, 3500)
+    u.move_servo(c.ARM, c.ARM_GRAB + 70, 5)
+    g.turn_with_gyro(-80, 80, 30)
+    u.move_servo(c.ARM, c.ARM_UP, 5)
+    u.move_servo(c.ARM, c.ARM_GRAB + 70, 5)
+    g.turn_with_gyro(80, -80, 60)
+    u.move_servo(c.ARM, c.ARM_UP, 5)
+    u.move_servo(c.ARM, c.ARM_GRAB + 70, 5)
+    g.turn_with_gyro(-80, 80, 30)
+    u.move_servo(c.ARM, c.ARM_GRAB)
+    g.drive_timed(-50, 1200)
+    u.move_servo(c.HAND, c.HAND_SATELLITE_DROP)
