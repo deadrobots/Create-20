@@ -91,6 +91,26 @@ def go_to_first_pole():
     g.turn_with_gyro(-80, 80, 85)
 
 
+def first_pole_alt():
+    u.move_servo(c.ARM, c.ARM_UP)
+    g.turn_with_gyro(-80, 80, 90)
+    g.drive_timed(250, 3000)
+    g.drive_timed(-250, 2450)
+    g.turn_with_gyro(-80, 80, 90)
+    d.drive_to_black_and_square_up(-100)
+    u.move_servo(c.ARM, c.ARM_POLE_GRAB)
+    g.drive_timed(100, 1900)
+    msleep(500)
+    u.move_servo(c.HAND, c.HAND_CLOSE)
+    u.move_servo(c.ARM, c.ARM_POLE_PULL)
+    msleep(500)
+    g.drive_timed(-100, 1700)
+    g.turn_with_gyro(-50, 50, 15)
+    u.move_servo(c.HAND, c.HAND_OPEN)
+    u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
+    g.turn_with_gyro(50, -50, 15)
+
+
 def grab_pole():
     g.drive_timed(100, 2200)
     g.turn_with_gyro(-80, 80, 15)
@@ -104,6 +124,9 @@ def grab_pole():
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
     g.turn_with_gyro(50, -50, 30)
     d.drive_to_black_and_square_up(-100)
+    u.move_servo(c.ARM, c.ARM_UP)
+    g.drive_timed(200, 500)
+    d.drive_to_black_and_square_up(-100)
 
 
 def go_to_second_pole():
@@ -111,6 +134,26 @@ def go_to_second_pole():
     g.drive_timed(100, 2600)
     g.turn_with_gyro(-80, 80, 85)
     g.drive_timed(100, 500)
+
+
+def second_pole_alt():
+    g.turn_with_gyro(80, -80, 90)
+    g.drive_timed(300, 1100)
+    g.turn_with_gyro(-80, 80, 90)
+    u.move_servo(c.ARM, c.ARM_POLE_GRAB)
+    u.wait_for_button()
+    g.drive_timed(100, 1950)
+    msleep(500)
+    u.move_servo(c.HAND, c.HAND_CLOSE)
+    u.move_servo(c.ARM, c.ARM_POLE_PULL)
+    g.drive_timed(-100, 1700)
+    g.turn_with_gyro(-50, 50, 15)
+    u.move_servo(c.HAND, c.HAND_OPEN)
+    u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
+    g.turn_with_gyro(50, -50, 15)
+    u.move_servo(c.ARM, c.ARM_UP)
+    g.drive_timed(200, 500)
+    d.drive_to_black_and_square_up(-100)
 
 
 def go_to_third_pole():
