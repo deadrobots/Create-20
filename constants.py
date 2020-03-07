@@ -19,6 +19,7 @@ if IS_PRIME:
     ARM_POLE_GRAB = 700
     ARM_POLE_RELEASE = 700
     ARM_GRAB = 1250
+    ARM_SWEEP = 1350
     ARM_UP = 1800
 
     # hand values

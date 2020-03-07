@@ -95,17 +95,20 @@ def first_pole_alt():
     u.move_servo(c.ARM, c.ARM_UP)
     g.turn_with_gyro(-80, 80, 90)
     g.drive_timed(250, 3000)
-    g.drive_timed(-250, 2450)
+    g.drive_timed(-250, 2400) #2450
     g.turn_with_gyro(-80, 80, 90)
     d.drive_to_black_and_square_up(-100)
     u.move_servo(c.ARM, c.ARM_POLE_GRAB)
     g.drive_timed(100, 1900)
-    msleep(500)
+    msleep(1000)
     u.move_servo(c.HAND, c.HAND_CLOSE)
     u.move_servo(c.ARM, c.ARM_POLE_PULL)
     msleep(500)
-    g.drive_timed(-100, 1700)
-    g.turn_with_gyro(-50, 50, 15)
+    g.drive_timed(-100, 1770) #1750
+    g.turn_with_gyro(-50, 50, 15) #15
+    msleep(500)
+    g.drive_timed(100, 600)
+    msleep(500)
     u.move_servo(c.HAND, c.HAND_OPEN)
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
     g.turn_with_gyro(50, -50, 15)
@@ -121,6 +124,7 @@ def grab_pole():
     g.turn_with_gyro(-50, 50, 15)  # score cart
     msleep(500)
     g.drive_timed(100, 1250)
+    msleep(500)
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
     g.turn_with_gyro(50, -50, 30)
     d.drive_to_black_and_square_up(-100)
@@ -138,16 +142,22 @@ def go_to_second_pole():
 
 def second_pole_alt():
     g.turn_with_gyro(80, -80, 90)
-    g.drive_timed(300, 1100)
+    g.drive_timed(250, 2800) #1100
+    g.drive_timed(-250, 1200)
     g.turn_with_gyro(-80, 80, 90)
+    g.drive_timed(100, 750)
+    d.drive_to_black_and_square_up(-100)
     u.move_servo(c.ARM, c.ARM_POLE_GRAB)
-    u.wait_for_button()
     g.drive_timed(100, 1950)
-    msleep(500)
+    msleep(1000)
     u.move_servo(c.HAND, c.HAND_CLOSE)
     u.move_servo(c.ARM, c.ARM_POLE_PULL)
+    msleep(500)
     g.drive_timed(-100, 1700)
     g.turn_with_gyro(-50, 50, 15)
+    msleep(500)
+    g.drive_timed(100, 500)
+    msleep(500)
     u.move_servo(c.HAND, c.HAND_OPEN)
     u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
     g.turn_with_gyro(50, -50, 15)
@@ -167,16 +177,21 @@ def grab_third_pole():
     g.turn_with_gyro(-80, 80, 82)    # 85
     u.move_servo(c.ARM, c.ARM_POLE_GRAB)
     u.move_servo(c.HAND, c.HAND_MIDDLE)
-    g.drive_timed(50, 3800)     # 100, 2000
+    g.drive_timed(50, 3800)
+    msleep(1000)
     u.move_servo(c.HAND, c.HAND_CLOSE)
-    # we have the pipe
+    msleep(1000)
+    # we have the pole
     u.move_servo(c.ARM, c.ARM_POLE_PULL)
     msleep(500)
     g.drive_timed(-100, 1800)   # 1600
-    msleep(500)
+    msleep(700)
     g.turn_with_gyro(-50, 50, 15)
+    msleep(1000)
+    g.drive_timed(100, 500)
+    msleep(500)
     u.move_servo(c.HAND, c.HAND_OPEN)
-    u.move_servo(c.ARM, c.ARM_POLE_RELEASE)
+    u.move_servo(c.ARM, c.ARM_POLE_RELEASE + 200)
 
 
 def go_to_orange_ball():
@@ -187,11 +202,11 @@ def go_to_orange_ball():
     g.turn_with_gyro(100, -100, 90)
     g.drive_timed(100, 1200)
     g.drive_timed(-100, 500)
-    g.turn_with_gyro(80, -80, 150)
+    g.turn_with_gyro(80, -80, 152) #
 
 
 def grab_orange_ball():
-    u.move_servo(c.ARM, c.ARM_POLE_RELEASE + 100)
+    u.move_servo(c.ARM, c.ARM_POLE_RELEASE +70) #+50
     g.drive_timed(50, 800)
     u.move_servo(c.HAND, c.HAND_CLOSE, 3)
     u.move_servo(c.ARM, c.ARM_UP, 5)
@@ -204,15 +219,19 @@ def deliver_organge_ball():
     g.turn_with_gyro(-80, 80, 90)
     g.drive_timed(100, 4000)
     g.turn_with_gyro(80, -80, 45)
-    g.drive_timed(100, 3500)
-    u.move_servo(c.ARM, c.ARM_GRAB + 70, 5)
-    g.turn_with_gyro(-80, 80, 30)
+    g.drive_timed(100, 3300) #3500
+    g.turn_with_gyro(80, -80, 12)
+    u.move_servo(c.ARM, c.ARM_SWEEP, 5)
+    msleep(1000)
+    g.turn_with_gyro(-80, 80, 60)
     u.move_servo(c.ARM, c.ARM_UP, 5)
-    u.move_servo(c.ARM, c.ARM_GRAB + 70, 5)
+    u.move_servo(c.ARM, c.ARM_SWEEP, 5)
     g.turn_with_gyro(80, -80, 60)
     u.move_servo(c.ARM, c.ARM_UP, 5)
-    u.move_servo(c.ARM, c.ARM_GRAB + 70, 5)
-    g.turn_with_gyro(-80, 80, 30)
+    u.move_servo(c.ARM, c.ARM_SWEEP, 5)
+    g.turn_with_gyro(-80, 80, 18)
     u.move_servo(c.ARM, c.ARM_GRAB)
     g.drive_timed(-50, 1200)
-    u.move_servo(c.HAND, c.HAND_SATELLITE_DROP)
+    u.move_servo(c.HAND, c.HAND_SATELLITE_DROP - 40, 8)
+    msleep(500)
+    u.move_servo(c. HAND, c.HAND_SATELLITE_DROP + 75)
